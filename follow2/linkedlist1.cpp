@@ -4,13 +4,14 @@ using namespace std;
 struct Node {
     int value; // Data member
     Node *next;// next pointer 
-}*head = NULL, *current = NULL, *previous = NULL;
+}*head = NULL, *current = NULL, *previous = NULL, *nextNode = NULL;
 
 // Prototype for linked list operation
 void AppendNode(int);
 void DisplayList();
 void InsertNode(int);
 void DeleteNode(int);
+void DestroyList();
 
 
 int main() {
@@ -26,10 +27,13 @@ int main() {
     while (true){
         cout << "\nEnter value to be delete: ";
         cin >> val;
+        if (val < 0) break;
         DeleteNode(val);
         DisplayList();
     }
-    
+
+    DestroyList();
+    DisplayList();
 }
 
 // Function Definition
@@ -140,5 +144,25 @@ void DeleteNode(int valueToDelete) {
         cout << "value is now deleted...\n";
         else 
         cout << "values is not in the list...\n";
+    }
+}
+
+void DestroyList() {
+    if(!head) {
+        cout << "list is empty...\n";
+    }
+    else {
+        // traverse the list up to the last node
+        current = head;
+        while(current) {
+            // get the next node to be deleted
+            nextNode = current->next;
+            // delete the current node
+            delete current;
+            // assign the next node to be deleted
+            current = current->next;
+        }
+        cout << "The list is now destroyed...\n";
+        head = NULL;
     }
 }
