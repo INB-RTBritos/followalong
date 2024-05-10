@@ -10,18 +10,26 @@ struct Node {
 void AppendNode(int);
 void DisplayList();
 void InsertNode(int);
+void DeleteNode(int);
 
 
 int main() {
     int val;
 
-    do {
+    while (true) {
         cout << "Enter a value: ";
         cin >> val;
         if (val < 0) break;
         InsertNode(val);
-    } while (true);
+    }
     DisplayList();
+    while (true){
+        cout << "\nEnter value to be delete: ";
+        cin >> val;
+        DeleteNode(val);
+        DisplayList();
+    }
+    
 }
 
 // Function Definition
@@ -94,5 +102,43 @@ void InsertNode(int newValue) {
             // reconnect the link
             newNode->next = current;
         }
+    }
+}
+void DeleteNode(int valueToDelete) {
+    bool found = false;
+    if (!head) {
+        cout << "List is empty...";
+    }
+    else {
+        if (head->value == valueToDelete) {
+            // if the value to be deleted is the first node
+            // temporarily set the current node to point to the 2nd node in the list
+            current = head;
+            // delete the current first node
+            delete head;
+            // set the second node as the new first node
+            head = current;
+            found = true;
+        }
+        else {
+            // traverse the list until the value to be deleted is found
+            current = head;
+            while (current->value != valueToDelete) {
+                previous = current;
+                current = current->next;
+            }
+            // if the value to be deleted is found 
+            if (current) {
+                // break the link of node that will be deleted
+                previous->next= current->next;
+                // delete the node
+                delete current;
+                found = true;
+            }
+        }
+        if (found) 
+        cout << "value is now deleted...\n";
+        else 
+        cout << "values is not in the list...\n";
     }
 }
