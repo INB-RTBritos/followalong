@@ -24,6 +24,7 @@ int main() {
         InsertNode(val);
     }
     DisplayList();
+    // delete per value
     while (true){
         cout << "\nEnter value to be delete: ";
         cin >> val;
@@ -31,7 +32,7 @@ int main() {
         DeleteNode(val);
         DisplayList();
     }
-
+    // delete whole list
     DestroyList();
     DisplayList();
 }
@@ -117,7 +118,7 @@ void DeleteNode(int valueToDelete) {
         if (head->value == valueToDelete) {
             // if the value to be deleted is the first node
             // temporarily set the current node to point to the 2nd node in the list
-            current = head;
+            current = head->next;
             // delete the current first node
             delete head;
             // set the second node as the new first node
