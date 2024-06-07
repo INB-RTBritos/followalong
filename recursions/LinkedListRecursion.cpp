@@ -64,9 +64,9 @@ Node *ReverseList(Node *current, Node *previous = NULL) {
     if (!current) 
     return previous;
 
-    else {
+  
     nextNode = current->next;
     current->next = previous;
     return ReverseList(nextNode, current);
-    }
+    
 }
