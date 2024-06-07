@@ -17,11 +17,13 @@ int main() {
 
 int Factorial(int num){
     if (num == 0) // will be the condition to make the recursive call stop
-    return 1;
+    return 0;
+    else if (num == 1)
+    return 1; 
 
     return num * Factorial(num - 1); // cannot be declared as num-- because the parameter expects an int so you
                                     // need to use something of similar variable type               
                                     //  returning the num but uses the value of the function to be part of the 
                                     //  formula and eventually goes to first condition one it hits zero
-                                     
+                                   
 }
