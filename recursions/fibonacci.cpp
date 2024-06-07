@@ -9,7 +9,6 @@ int main() {
 
     cout << "Input the position in the fibonacci sequence you want to know: ";
     cin >> numHolder;
-
     Output(numHolder);
 }
 
@@ -26,8 +25,8 @@ void Output(int num) {
     int fibonacci;
     fibonacci = Fibonacci(num);
 
-    cout << "\nFibonacci Sequence:5\n";
-    for (int i = 0; i <= num; i++) {
+    cout << "\nFibonacci Sequence:\n";
+    for (int i = 1; i <= num; i++) {
         cout << Fibonacci(i) << " ";
     }
     cout << "\n\n";
